@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use App\Repositories\Eloquent\EloquentUser;
+use App\User;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +28,20 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Schema::defaultStringLength(191);
+
+        $app = $this->app;
+
+        //Install User Eloquent
+        $app->bind('App\Repositories\Interfaces\UserInterface',function(){
+
+          return new EloquentUser(
+
+            new User
+
+            );
+
+        });
+
+
     }
 }

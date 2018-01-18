@@ -16,3 +16,21 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace' => 'Authenticate'], function () {
+
+	Route::post('login','LoginController@login');
+
+});
+
+Route::group(['namespace' => 'User'], function () {
+
+	Route::apiResource('user', 'UserController', ['only' => [
+	    'store', 'update', 'destroy'
+	]]);
+
+});
+
+
+
+
