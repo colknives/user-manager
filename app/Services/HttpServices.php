@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +14,7 @@ class HttpServices
 
     protected $method;
 
-    protected $body;
+    protected $data;
 
 
     function __construct(){
@@ -27,7 +27,7 @@ class HttpServices
 
         $this->url = env('APP_URL','').'/oauth/token';
         $this->method = 'post';
-        $this->body = $data;
+        $this->data = $data;
 
         return $this->request('form_params');
 
@@ -37,32 +37,41 @@ class HttpServices
 
         try{
 
-            switch ($type) {
-                case 'form_params':
-                    
-                        $res = $this->client->{$this->method}($this->url, [
-                           'form_params' => $this->body
-                        ]);
+            try{
 
-                break;
-                case 'body':
-                    
-                        $res = $this->client->{$this->method}($this->url, [
-                           'body' => json_encode($this->body)
-                        ]);
+                switch ($type) {
+                    case 'form_params':
+                        
+                            $res = $this->client->{$this->method}($this->url, [
+                               'form_params' => $this->data
+                            ]);
 
-                break;
+                    break;
+                    case 'body':
+                        
+                            $res = $this->client->{$this->method}($this->url, [
+                               'body' => json_encode($this->data)
+                            ]);
+
+                    break;
+                }
+
+                return json_decode($res->getBody());
+
+
+            }
+            catch(\GuzzleHttp\Exception\ClientException $e){
+
+                return false;
             }
 
-            return json_decode($res->getBody());
-
-
         }
-        catch(\GuzzleHttp\Exception\ClientException $e){
+        catch(\GuzzleHttp\Exception\BadResponseException $e){
 
-            $exception = json_decode($e->getResponse()->getBody()->getContents());
+            $exception = $e->getResponse();
 
             return false;
+
         }
 
     }
