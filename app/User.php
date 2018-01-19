@@ -11,12 +11,26 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
 
     /**
+     * The primary key associated with the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'username',  'password', 'address', 'postcode', 'phone'
     ];
 
     /**
@@ -27,6 +41,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = true;
 
     public function findForPassport($username) {
         return $this->where('username', $username)->first();

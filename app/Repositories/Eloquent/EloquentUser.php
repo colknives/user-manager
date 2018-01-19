@@ -86,7 +86,17 @@ class EloquentUser implements UserInterface
 
   public function delete($id){
 
-    return $this->user->where('id','=',$id)->delete();
+    return $this->user
+                ->where('id','=',$id)
+                ->delete();
+
+  }
+
+  public function deleteMulti($ids){
+
+    return $this->user
+                ->whereIn('id', $ids)
+                ->delete();
 
   }
 

@@ -29,6 +29,8 @@ Route::group(['namespace' => 'User'], function () {
 	    'store', 'update', 'destroy'
 	]]);
 
+	Route::post('user/delete','UserController@destroyMulti');
+
 });
 
 

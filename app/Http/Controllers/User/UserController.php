@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Services\UserServices;
 
@@ -43,7 +45,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
 
         $response = $this->user->store($request->all());
@@ -81,9 +83,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        //
+        $response = $this->user->update($id, $request->all());
+
+        return response()->json($response, $response['status']);
     }
 
     /**
@@ -94,6 +98,22 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = $this->user->delete($id);
+
+        return response()->json($response, $response['status']);
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMulti(UserDeleteMultiRequest $request)
+    {
+
+        $response = $this->user->deleteMulti($request);
+
+        return response()->json($response, $response['status']);
     }
 }

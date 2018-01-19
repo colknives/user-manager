@@ -45,8 +45,126 @@ class UserServices
         else{
 
             $response = [
-                'status'  => false,
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
                 'message' => 'User unsuccessfully created'
+            ];
+
+            return $response;
+
+        }
+
+    }
+
+    public function update($id, $data){
+
+        $findById = $this->userRepository->findById($id); 
+
+        if( !$findById ){
+
+            $response = [
+                'status'  => Response::HTTP_NOT_FOUND,
+                'message' => 'User not found'
+            ];
+
+            return $response;
+
+        }
+
+        $data = [
+            "first_name" => $data['first_name'],
+            "last_name" => $data['last_name'],
+            "email" => $data['email'],
+            "username" => $data['username'],
+            "password" => Hash::make($data['password']),
+            "address" => $data['address'],
+            "postcode" => $data['postcode'],
+            "phone" => $data['phone']
+        ];
+
+        $update = $this->userRepository->update($id, $data);
+
+        if( $update ){
+
+            $response = [
+                'status'  => Response::HTTP_OK,
+                'message' => 'User successfully updated'
+            ];
+
+            return $response;
+
+        }
+        else{
+
+            $response = [
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'User unsuccessfully updated'
+            ];
+
+            return $response;
+
+        }
+
+    }
+
+    public function delete($id){
+
+        $findById = $this->userRepository->findById($id); 
+
+        if( !$findById ){
+
+            $response = [
+                'status'  => Response::HTTP_NOT_FOUND,
+                'message' => 'User not found'
+            ];
+
+            return $response;
+
+        }
+
+        $delete = $this->userRepository->delete($id);
+
+        if( $delete ){
+
+            $response = [
+                'status'  => Response::HTTP_OK,
+                'message' => 'User successfully deleted'
+            ];
+
+            return $response;
+
+        }
+        else{
+
+            $response = [
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'User unsuccessfully deleted'
+            ];
+
+            return $response;
+
+        }
+
+    }
+
+    public function deleteMulti($data){
+
+        $delete = $this->userRepository->deleteMulti($data['user_id']);
+
+        if( $delete ){
+
+            $response = [
+                'status'  => Response::HTTP_OK,
+                'message' => 'User successfully deleted'
+            ];
+
+            return $response;
+
+        }
+        else{
+
+            $response = [
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'User unsuccessfully deleted'
             ];
 
             return $response;
