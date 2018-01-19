@@ -18,16 +18,6 @@ class LoginController extends Controller
 
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('auth.login');
-    }
-
     public function login(LoginRequest $request){
 
     	$response = $this->auth->login($request->username, $request->password);

@@ -31,6 +31,12 @@ class EloquentUser implements UserInterface
 
   }
 
+  public function fetch(){
+
+    return $this->user->get();
+
+  }
+
   public function findById($id){
 
     $search = [

@@ -1,3 +1,40 @@
+body{
+	background-color: #ffffff; 
+}
+
+.header-container{
+	padding: 10px;
+	border-bottom: 1px solid #e4e4e4;
+	background-color: #fff;
+}
+
+.header-logo-container a{
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.header-logo-container a:hover{
+	text-decoration: none;
+}
+
+
+.logo-user{
+	color:#d22121;
+}
+
+.logo-manager{
+	color:#6b1818;
+}
+
+.container{
+	padding: 20px;
+}
+
+.error-field-message{
+	font-size: 0.75em;
+}
+
 .login-container{
 	margin: 0 auto;
 	max-width: 500px;

@@ -17,6 +17,35 @@ class UserServices
         $this->userRepository = $userRepository;
     }
 
+    public function fetch()
+    {
+
+        $fetch = $this->userRepository->fetch();
+
+        if( $fetch ){
+
+            $response = [
+                'status'  => Response::HTTP_OK,
+                'message' => 'Users successfully fetched',
+                'list'    => $fetch
+            ];
+
+            return $response;
+
+        }
+        else{
+
+            $response = [
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'Users unsuccessfully fetched'
+            ];
+
+            return $response;
+
+        }
+
+    }
+
     public function store($data){
 
         $data = [

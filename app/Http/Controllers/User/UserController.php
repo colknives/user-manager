@@ -20,23 +20,18 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Fetch resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function fetch()
     {
-        return view('user.list');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $response = $this->user->fetch();
+
+        return response()->json($response, $response['status']);
+
     }
 
     /**
@@ -52,28 +47,6 @@ class UserController extends Controller
 
         return response()->json($response, $response['status']);
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

@@ -11,22 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('test','TestController@test');
+Route::get('{path}', function () {
+    return view('index');
+})->where('path', '(.*)');
 
-Route::group(['namespace' => 'Authenticate'], function () {
-
-		Route::get('login','LoginController@index');
-
-});
-
-Route::group(['namespace' => 'User'], function () {
-
-	Route::Resource('user', 'UserController', ['only' => [
-	    'index', 'create', 'show', 'edit'
-	]]);
-
-});

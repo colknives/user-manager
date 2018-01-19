@@ -5,6 +5,8 @@ interface UserInterface
 
 	public function all();
 
+	public function fetch();
+
 	public function findById($id);
 
 	public function findByUsername($data);
