@@ -1,0 +1,42 @@
+body{
+	background-color: #ffffff; 
+}
+
+.login-container{
+	margin: 0 auto;
+	max-width: 500px;
+	margin-top: 6%;
+}
+
+.login-header-container{
+	text-align: center;
+	padding: 10px;
+}
+
+.login-header-container h1{
+	font-family: 'Roboto Slab', serif;
+	font-size: 2em;
+	font-weight: 700;
+}
+
+.logo-user{
+	color:#d22121;
+}
+
+.logo-manager{
+	color:#6b1818;
+}
+
+.login-form-container{
+	background-color: #f1f1f1;
+	padding: 20px;
+}
+
+.login-form-header{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+.login-form-container p{
+	font-family: 'Roboto', sans-serif;
+}

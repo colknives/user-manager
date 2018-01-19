@@ -16,3 +16,17 @@ Route::get('/', function () {
 });
 
 Route::get('test','TestController@test');
+
+Route::group(['namespace' => 'Authenticate'], function () {
+
+		Route::get('login','LoginController@index');
+
+});
+
+Route::group(['namespace' => 'User'], function () {
+
+	Route::Resource('user', 'UserController', ['only' => [
+	    'index', 'create', 'show', 'edit'
+	]]);
+
+});
