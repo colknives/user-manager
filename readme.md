@@ -61,6 +61,13 @@ Next, run the following command in git bash
 
 Finally, run the URL created from the virtual host
 
+## User Credentials
+
+The following are the built in user credentials used in the project
+
+	Username: admin
+	Password: password
+
 ## Reference
 
 1. [Laravel](https://laravel.com/)
