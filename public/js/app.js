@@ -47609,7 +47609,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "btn btn-light",
-                    attrs: { to: "./../../dashboard" }
+                    attrs: { to: "./../dashboard" }
                   },
                   [_vm._v("Cancel")]
                 ),
