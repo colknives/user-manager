@@ -30,6 +30,7 @@ Route::group(['namespace' => 'User'], function () {
 	]]);
 
 	Route::get('user','UserController@fetch');
+	Route::get('user/{id}','UserController@find');
 
 	Route::post('user/delete','UserController@destroyMulti');
 

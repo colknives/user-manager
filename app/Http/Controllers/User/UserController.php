@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserDeleteMultiRequest;
 use App\Http\Controllers\Controller;
 use App\Services\UserServices;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Fetch resource in storage.
+     * Fetch resources in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -32,6 +33,19 @@ class UserController extends Controller
 
         return response()->json($response, $response['status']);
 
+    }
+
+    /**
+     * Find specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function find($id)
+    {
+        $response = $this->user->find($id);
+
+        return response()->json($response, $response['status']);
     }
 
     /**

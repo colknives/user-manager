@@ -26,7 +26,7 @@ class UserDeleteMultiRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required'
+            'user_id' => 'required'
         ];
     }
 

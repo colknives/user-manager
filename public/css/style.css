@@ -66,3 +66,13 @@ body{
 .login-form-container p{
 	font-family: 'Roboto', sans-serif;
 }
+
+.user-list-add-container{
+	padding: 10px 0px;
+}
+
+.page-header-container{
+	padding: 10px 0px;
+	margin: 10px 0px;
+	border-bottom: 1px solid #d4d4d4;
+}

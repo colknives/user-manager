@@ -27,7 +27,7 @@
                     <div class="form-actions">
                         <div class="form-group row">
                             <div class="col-md-12 login-submit-container">
-                                <button type="button" v-on:click="submit" class="btn btn-primary error-field-message">Login</button>
+                                <button type="button" v-on:click="submit" class="btn btn-primary">Login</button>
                             </div>
                         </div>
                     </div>

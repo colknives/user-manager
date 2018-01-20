@@ -46,6 +46,35 @@ class UserServices
 
     }
 
+    public function find($id)
+    {
+
+        $find = $this->userRepository->findById($id);
+
+        if( $find ){
+
+            $response = [
+                'status'  => Response::HTTP_OK,
+                'message' => 'User successfully fetched',
+                'user'    => $find
+            ];
+
+            return $response;
+
+        }
+        else{
+
+            $response = [
+                'status'  => Response::HTTP_UNPROCESSABLE_ENTITY,
+                'message' => 'User unsuccessfully fetched'
+            ];
+
+            return $response;
+
+        }
+
+    }
+
     public function store($data){
 
         $data = [
@@ -154,9 +183,12 @@ class UserServices
 
         if( $delete ){
 
+            $list = $this->userRepository->fetch();
+
             $response = [
                 'status'  => Response::HTTP_OK,
-                'message' => 'User successfully deleted'
+                'message' => 'User successfully deleted',
+                'list'    => $list
             ];
 
             return $response;
@@ -181,9 +213,12 @@ class UserServices
 
         if( $delete ){
 
+            $list = $this->userRepository->fetch();
+
             $response = [
                 'status'  => Response::HTTP_OK,
-                'message' => 'User successfully deleted'
+                'message' => 'User successfully deleted',
+                'list'    => $list
             ];
 
             return $response;

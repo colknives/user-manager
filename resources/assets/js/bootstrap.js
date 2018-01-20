@@ -38,6 +38,11 @@ if (token) {
 }
 
 /**
+ * Define the base url that will be use for the API
+ */
+window.axios.defaults.baseURL = 'http://usermanager.test/';
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

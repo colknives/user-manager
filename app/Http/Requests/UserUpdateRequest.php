@@ -35,7 +35,7 @@ class UserUpdateRequest extends FormRequest
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'username' => 'required|unique:users,username,'.$id,
-            'password' => 'required',
+            'password' => 'confirmed',
             'address' => 'required',
             'postcode' => 'required',
             'phone' => 'required',

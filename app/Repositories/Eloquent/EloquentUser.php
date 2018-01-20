@@ -33,7 +33,9 @@ class EloquentUser implements UserInterface
 
   public function fetch(){
 
-    return $this->user->get();
+    return $this->user
+                ->where('username','!=','admin')
+                ->get();
 
   }
 
