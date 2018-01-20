@@ -10,12 +10,6 @@ import Main from './components/Main.vue';
 
 Vue.use(VueRouter);
 
-// Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
-// Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token');
-// Vue.http.options.root = 'http://laravel.dev:8080';
-
-Vue.component('navigation',require('./components/Navigation.vue'));
-
 export default Vue;
 
 export var router = new VueRouter({
@@ -49,6 +43,12 @@ export var router = new VueRouter({
         }
     ]
 });
+
+
+export var headers = { 
+    Authorization: "Bearer " + localStorage.getItem('token'),
+    Accept: "application/json"       
+};
 
 const app = new Vue({
     el: '#app',

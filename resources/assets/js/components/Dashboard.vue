@@ -81,18 +81,20 @@ export default {
     },
     methods: {
         deleteUser: function (id) {
-
             if ( confirm("Are you sure do you want to delete the selected user?") ) {
                 users.delete(this, id);
             }
-
         },
         deleteAllUser: function () {
-
             if ( ( this.selected.user_id.length > 0 ) && confirm("Are you sure do you want to delete the selected user?") ) {
                 users.deleteAll(this, this.selected);
             }
-
+        },
+        setErrors(response) {
+            if( response.data.error ){
+                this.errors = response.data.error;
+            }
+            this.errorMessage = response.data.message;
         }
     },
     computed: {

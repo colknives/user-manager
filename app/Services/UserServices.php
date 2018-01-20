@@ -133,11 +133,15 @@ class UserServices
             "last_name" => $data['last_name'],
             "email" => $data['email'],
             "username" => $data['username'],
-            "password" => Hash::make($data['password']),
             "address" => $data['address'],
             "postcode" => $data['postcode'],
             "phone" => $data['phone']
         ];
+
+        //Check if there are changes in password
+        if( isset($data['password']) ){
+            $data['password'] = Hash::make($data['password']);
+        }
 
         $update = $this->userRepository->update($id, $data);
 

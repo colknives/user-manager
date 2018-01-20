@@ -23,7 +23,7 @@ Route::group(['namespace' => 'Authenticate'], function () {
 
 });
 
-Route::group(['namespace' => 'User'], function () {
+Route::group(['namespace' => 'User', 'middleware' => 'auth:api'], function () {
 
 	Route::apiResource('user', 'UserController', ['only' => [
 	    'store', 'update', 'destroy'

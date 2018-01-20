@@ -380,6 +380,7 @@ module.exports = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "router", function() { return router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "headers", function() { return headers; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(41);
@@ -404,12 +405,6 @@ __webpack_require__(14);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
-
-// Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
-// Vue.http.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('id_token');
-// Vue.http.options.root = 'http://laravel.dev:8080';
-
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('navigation', __webpack_require__(54));
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0_vue___default.a);
 
@@ -437,6 +432,11 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         }]
     }]
 });
+
+var headers = {
+    Authorization: "Bearer " + localStorage.getItem('token'),
+    Accept: "application/json"
+};
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -740,10 +740,13 @@ module.exports = defaults;
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     fetch: function fetch(context) {
 
-        axios.get('api/user').then(function (response) {
+        axios.get('api/user', {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
             context.users = response.data.list;
         }).catch(function (_ref) {
             var response = _ref.response;
@@ -752,10 +755,10 @@ module.exports = defaults;
     },
     find: function find(context, id) {
 
-        axios.get('api/user/' + id).then(function (response) {
+        axios.get('api/user/' + id, {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
             context.user = response.data.user;
-
-            // console.log(response);
         }).catch(function (response) {
 
             __WEBPACK_IMPORTED_MODULE_0__app_js__["router"].push({
@@ -767,7 +770,9 @@ module.exports = defaults;
     },
     add: function add(context, user) {
 
-        axios.post('api/user', user).then(function (response) {
+        axios.post('api/user', user, {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
 
             __WEBPACK_IMPORTED_MODULE_0__app_js__["router"].push({
                 name: 'dashboard'
@@ -781,7 +786,9 @@ module.exports = defaults;
     },
     update: function update(context, id, user) {
 
-        axios.patch('api/user/' + id, user).then(function (response) {
+        axios.patch('api/user/' + id, user, {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
 
             __WEBPACK_IMPORTED_MODULE_0__app_js__["router"].push({
                 name: 'dashboard'
@@ -795,7 +802,9 @@ module.exports = defaults;
     },
     delete: function _delete(context, id) {
 
-        axios.delete('api/user/' + id).then(function (response) {
+        axios.delete('api/user/' + id, {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
             context.users = response.data.list;
             context.successMessage = response.data.message;
         }).catch(function (_ref4) {
@@ -805,8 +814,9 @@ module.exports = defaults;
     },
     deleteAll: function deleteAll(context, selected) {
 
-        axios.post('api/user/delete', selected).then(function (response) {
-            console.log(response.data);
+        axios.post('api/user/delete', selected, {
+            headers: __WEBPACK_IMPORTED_MODULE_0__app_js__["headers"]
+        }).then(function (response) {
             context.users = response.data.list;
             context.successMessage = response.data.message;
         }).catch(function (_ref5) {
@@ -46109,16 +46119,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         deleteUser: function deleteUser(id) {
-
             if (confirm("Are you sure do you want to delete the selected user?")) {
                 __WEBPACK_IMPORTED_MODULE_1__services_users_js__["a" /* default */].delete(this, id);
             }
         },
         deleteAllUser: function deleteAllUser() {
-
             if (this.selected.user_id.length > 0 && confirm("Are you sure do you want to delete the selected user?")) {
                 __WEBPACK_IMPORTED_MODULE_1__services_users_js__["a" /* default */].deleteAll(this, this.selected);
             }
+        },
+        setErrors: function setErrors(response) {
+            if (response.data.error) {
+                this.errors = response.data.error;
+            }
+            this.errorMessage = response.data.message;
         }
     },
     computed: {
@@ -47640,102 +47654,8 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(67)
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Navigation.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9364ea6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-9364ea6a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "header-container row" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-6 text-right" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "button" },
-          on: { click: _vm.logout }
-        },
-        [_vm._v("Logout")]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "header-logo-container col-md-6" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("h4", [
-          _c("span", { staticClass: "logo-user" }, [_vm._v("USER")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "logo-manager" }, [_vm._v("MANAGER")])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9364ea6a", module.exports)
-  }
-}
-
-/***/ }),
+/* 54 */,
+/* 55 */,
 /* 56 */
 /***/ (function(module, exports) {
 
@@ -47752,46 +47672,7 @@ if (false) {
 /* 64 */,
 /* 65 */,
 /* 66 */,
-/* 67 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_auth_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_users_js__ = __webpack_require__(6);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    methods: {
-        logout: function logout() {
-            __WEBPACK_IMPORTED_MODULE_0__services_auth_js__["a" /* default */].logout();
-
-            router.push({
-                name: 'login'
-            });
-
-            router.go();
-        }
-    }
-});
-
-/***/ }),
+/* 67 */,
 /* 68 */,
 /* 69 */,
 /* 70 */,
