@@ -1,4 +1,5 @@
 <template>
+  <div class="manager-container">
     <div class="header-container row">
         <div class="header-logo-container col-md-6">
             <a href="#">
@@ -9,6 +10,10 @@
           <button type="button" v-on:click="logout" class="btn btn-primary">Logout</button>
         </div>
     </div>
+    <div class="container">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -20,12 +25,7 @@ export default {
     methods: {
         logout: function () {
           auth.logout();
-
-          router.push({
-              name: 'login'
-          })
-
-          router.go();
+          
         }
     }
 }

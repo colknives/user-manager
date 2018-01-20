@@ -68,7 +68,7 @@
           <div class="form-actions">
               <div class="form-group row">
                   <div class="col-md-12 user-submit-container">
-                      <router-link :to="'./../dashboard'" class="btn btn-light">Cancel</router-link>
+                      <router-link :to="'./../../dashboard'" class="btn btn-light">Cancel</router-link>
                       <button type="button" v-on:click="submit" class="btn btn-primary">Update User</button>
                   </div>
               </div>

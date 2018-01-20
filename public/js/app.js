@@ -391,7 +391,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_AddUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_AddUser_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UpdateUser_vue__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UpdateUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_UpdateUser_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Main_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_Main_vue__);
 __webpack_require__(14);
+
 
 
 
@@ -417,17 +420,21 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         name: 'login',
         component: __WEBPACK_IMPORTED_MODULE_2__components_Login_vue___default.a
     }, {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: __WEBPACK_IMPORTED_MODULE_3__components_Dashboard_vue___default.a
-    }, {
         path: '/user',
-        name: 'add-user',
-        component: __WEBPACK_IMPORTED_MODULE_4__components_AddUser_vue___default.a
-    }, {
-        path: '/user/:id',
-        name: 'update-user',
-        component: __WEBPACK_IMPORTED_MODULE_5__components_UpdateUser_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_6__components_Main_vue___default.a,
+        children: [{
+            path: '/dashboard',
+            name: 'dashboard',
+            component: __WEBPACK_IMPORTED_MODULE_3__components_Dashboard_vue___default.a
+        }, {
+            path: '/user',
+            name: 'add-user',
+            component: __WEBPACK_IMPORTED_MODULE_4__components_AddUser_vue___default.a
+        }, {
+            path: '/user/:id',
+            name: 'update-user',
+            component: __WEBPACK_IMPORTED_MODULE_5__components_UpdateUser_vue___default.a
+        }]
     }]
 });
 
@@ -588,6 +595,12 @@ module.exports = function normalizeComponent (
 
         localStorage.removeItem('token');
         localStorage.removeItem('info');
+
+        __WEBPACK_IMPORTED_MODULE_0__app_js__["router"].push({
+            name: 'login'
+        });
+
+        __WEBPACK_IMPORTED_MODULE_0__app_js__["router"].go();
     }
 });
 
@@ -45766,11 +45779,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        this.$nextTick(function () {
-            __WEBPACK_IMPORTED_MODULE_0__services_auth_js__["a" /* default */].logout();
-        });
-    },
     data: function data() {
         return {
             errors: [],
@@ -47587,7 +47595,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "btn btn-light",
-                    attrs: { to: "./../dashboard" }
+                    attrs: { to: "./../../dashboard" }
                   },
                   [_vm._v("Cancel")]
                 ),
@@ -47638,7 +47646,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(67)
 /* template */
 var __vue_template__ = __webpack_require__(55)
 /* template functional */
@@ -47686,26 +47694,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "header-container row" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-6 text-right" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "button" },
+          on: { click: _vm.logout }
+        },
+        [_vm._v("Logout")]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "header-container row" }, [
-      _c("div", { staticClass: "header-logo-container col-md-6" }, [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("h4", [
-            _c("span", { staticClass: "logo-user" }, [_vm._v("USER")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "logo-manager" }, [_vm._v("MANAGER")])
-          ])
+    return _c("div", { staticClass: "header-logo-container col-md-6" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("h4", [
+          _c("span", { staticClass: "logo-user" }, [_vm._v("USER")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "logo-manager" }, [_vm._v("MANAGER")])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 text-right" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Logout")])
       ])
     ])
   }
@@ -47724,6 +47740,198 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_auth_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_users_js__ = __webpack_require__(6);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        logout: function logout() {
+            __WEBPACK_IMPORTED_MODULE_0__services_auth_js__["a" /* default */].logout();
+
+            router.push({
+                name: 'login'
+            });
+
+            router.go();
+        }
+    }
+});
+
+/***/ }),
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Main.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4cfb21a0", Component.options)
+  } else {
+    hotAPI.reload("data-v-4cfb21a0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_auth_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_users_js__ = __webpack_require__(6);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        logout: function logout() {
+            __WEBPACK_IMPORTED_MODULE_0__services_auth_js__["a" /* default */].logout();
+        }
+    }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "manager-container" }, [
+    _c("div", { staticClass: "header-container row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 text-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "button" },
+            on: { click: _vm.logout }
+          },
+          [_vm._v("Logout")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [_c("router-view")], 1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header-logo-container col-md-6" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("h4", [
+          _c("span", { staticClass: "logo-user" }, [_vm._v("USER")]),
+          _vm._v(" "),
+          _c("span", { staticClass: "logo-manager" }, [_vm._v("MANAGER")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4cfb21a0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -42,11 +42,6 @@
 import auth from '../services/auth.js';
 
 export default {
-    mounted() {
-        this.$nextTick(function () {
-            auth.logout();
-        })
-    },
     data() {
         return {
             errors: [],

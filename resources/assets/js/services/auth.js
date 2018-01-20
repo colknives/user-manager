@@ -14,6 +14,7 @@ export default {
             router.go();
         }
 
+
     },
     login(context, login) {
 
@@ -37,6 +38,12 @@ export default {
         
         localStorage.removeItem('token');
         localStorage.removeItem('info');
+
+        router.push({
+              name: 'login'
+          })
+
+          router.go();
 
     }
 }
