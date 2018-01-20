@@ -64,6 +64,5 @@ Finally, run the URL created from the virtual host
 ## Reference
 
 1. [Laravel](https://laravel.com/)
-2. [Angular](https://angular.io/)
-3. [Angular CLI](https://cli.angular.io/)
-4. [Node JS](https://nodejs.org/en/)
+2. [Vue.js 2.x](https://vuejs.org/)
+3. [Node JS](https://nodejs.org/en/)
